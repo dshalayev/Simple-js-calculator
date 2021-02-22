@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <title>Calculator</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!--<link href="https://fonts.googleapis.com/css?family=Rokkitt&display=swap" rel="stylesheet" />-->
+    <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="css/main.css">
+
+
+    <script>
+    window.onload = function() {
+        const output = document.getElementById('output');
+        const numbers_arr = document.querySelectorAll(".number span");
+        const operators_arr = document.querySelectorAll(".num span");
+
+        const plus = document.getElementById('plus');
+        const minus = document.getElementById('minus');
+        const mult = document.getElementById('mult');
+        const div = document.getElementById('div');
+        console.log(plus);
+
+        const result = document.getElementById('calculate');
+        console.log(result);
+        const clear = document.getElementById('clear');
+        console.log(numbers_arr);
+
+        //attaching click event listener to all number buttons
+        for (let i = 0; i < numbers_arr.length; i++) {
+            numbers_arr[i].addEventListener('click', () => {
+            output.innerHTML += numbers_arr[i].innerHTML;
+            console.log(output.innerHTML);
+            });
+        }
+        //attaching click event listener to operator buttons
+        for (let i = 0; i < operators_arr.length; i++) {
+            operators_arr[i].addEventListener('click', () => {
+            output.innerHTML += operators_arr[i].innerHTML;
+            console.log(output.innerHTML);
+            });
+        }
+
+        result.addEventListener("click", () => {
+                let result_str = output.innerHTML;
+                console.log(result_str);
+                console.log(typeof result_str);
+
+                let numbers = result_str.split(/\+|\-|\×|\÷/g);
+                let operator = result_str.replace(/[0-9]|\./g, "").split("");
+                console.log(numbers);
+
+                let numbers_length = numbers.length;
+                console.log(numbers_length);
+                console.log(operator);
+
+                const ops_check = operator[0];
+                const x = parseFloat(numbers[0]);
+                const y = parseFloat(numbers[1]);
+                console.log(typeof x);
+                console.log(typeof y);
+
+                /*
+                Calculator 
+                */
+                let result_arr = numbers.concat(operator);
+                console.log(result_arr);
+
+                switch (ops_check) {
+                    case '+':
+                        console.log('+');
+                        output.innerHTML = x + y;
+                        console.log(output.innerHTML);
+                        break;
+                    case '-':
+                        console.log('-');
+                        output.innerHTML = x - y;
+                        console.log(output.innerHTML);
+                        break;
+                    case '×':
+                        console.log('×');
+                        output.innerHTML = x * y;
+                        console.log(output.innerHTML);
+                        break;
+                    case '÷':
+                        console.log('÷');
+                        output.innerHTML = x / y;
+                        console.log(output.innerHTML);
+                        break;
+                    default:
+                        
+                }
+
+            });
+
+            plus.addEventListener("click", () => {
+                let result_str = output.innerHTML;
+                console.log(result_str);
+                console.log(typeof result_str);
+
+                let numbers = result_str.split(/\+|\-|\×|\÷/g);
+                let operator = result_str.replace(/[0-9]|\./g, "").split("");
+                console.log(numbers);
+
+                let numbers_length = numbers.length;
+                console.log(numbers_length);
+                console.log(operator);
+
+                const ops_check = operator[0];
+                const x = parseFloat(numbers[0]);
+                const y = parseFloat(numbers[1]);
+                console.log(typeof x);
+                console.log(typeof y);
+
+                /*
+                Calculator 
+                */
+                let result_arr = numbers.concat(operator);
+                console.log(result_arr);
+
+                switch (ops_check) {
+                    case '+':
+                        console.log('+');
+                        output.innerHTML = x + y;
+                        console.log(output.innerHTML);
+                        break;
+                    case '-':
+                        console.log('-');
+                        output.innerHTML = x - y;
+                        console.log(output.innerHTML);
+                        break;
+                    case '×':
+                        console.log('×');
+                        output.innerHTML = x * y;
+                        console.log(output.innerHTML);
+                        break;
+                    case '÷':
+                        console.log('÷');
+                        output.innerHTML = x / y;
+                        console.log(output.innerHTML);
+                        break;
+                    default:
+                        
+                }
+
+            });
+
+            clear.addEventListener("click", () => {
+                output.innerHTML = "";
+            })
+    };
+    </script>
+</head>
+
+<body>
+
+    <div class="calc-warapper">
+        <div class="calc-container">
+            <div class="calc-container-inner">
+                <div class="output-container">
+
+                    <div class="result-output" id="output"></div>
+
+                </div>
+
+                <div class="buttons-container">
+
+                    <div class="left-panel">
+                        <div class="numbers">
+                            <button class="number btn"><span>7</span></button>
+                            <button class="number btn"><span>8</span></button>
+                            <button class="number btn"><span>9</span></button>
+                        </div>
+                        <div class="numbers">
+                            <button class="number btn"><span>4</span></button>
+                            <button class="number btn"><span>5</span></button>
+                            <button class="number btn"><span>6</span></button>
+                        </div>
+                        <div class="numbers">
+                            <button class="number btn"><span>1</span></button>
+                            <button class="number btn"><span>2</span></button>
+                            <button class="number btn"><span>3</span></button>
+                        </div>
+                        <div class="numbers">
+                            <button class="number btn"><span>0</span></button>
+                            <button class="number btn"><span id="decimal">.</span></button>
+                            <button class="btn"><span id="clear">c</span></button>
+
+                        </div>
+
+                    </div>
+                    <div class="right-panel">
+                        <div class="operators">
+                            <button class="num btn btn-orange"><span id="plus">+</span></button>
+                            <button class="num btn btn-orange"><span id="minus">-</span></button>
+                            <button class="num btn btn-orange"><span id="mult">&times;</span></button>
+                            <button class="num btn btn-orange"><span id="div">&divide;</span></button>
+                        </div>
+                    </div>
+                </div>
+                <div class="submit-container">
+                    <button class="submit" id="calculate">=</button>
+                </div>
+            </div>
+        </div>
+
+       
